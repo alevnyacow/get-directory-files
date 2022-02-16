@@ -1,3 +1,19 @@
-const answerForEverything = 42;
+import { readdirSync, readFileSync } from "fs";
+import { join } from "path";
 
-export { answerForEverything };
+export function readDirectoryFiles(directoryPath: string) {
+    const directoryContent = readdirSync(directoryPath, {
+        withFileTypes: true
+    });
+    const fileNames = directoryContent
+        .filter((x) => x.isFile())
+        .map((x) => x.name);
+    return fileNames.reduce((accumulator, currentName) => {
+        return {
+            ...accumulator,
+            [currentName]: readFileSync(
+                join(directoryPath, currentName)
+            ).toString()
+        };
+    }, {} as { [fileName: string]: string });
+}
