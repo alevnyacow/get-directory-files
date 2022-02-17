@@ -1,6 +1,8 @@
 import { readdirSync, readFileSync } from "fs";
 import { join } from "path";
 
+export type FilesData = { [fileName: string]: string };
+
 export function readDirectoryFiles(directoryPath: string) {
     const directoryContent = readdirSync(directoryPath, {
         withFileTypes: true
@@ -15,5 +17,5 @@ export function readDirectoryFiles(directoryPath: string) {
                 join(directoryPath, currentName)
             ).toString()
         };
-    }, {} as { [fileName: string]: string });
+    }, {} as FilesData);
 }
