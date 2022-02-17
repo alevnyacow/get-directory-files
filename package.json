@@ -1,6 +1,6 @@
 {
   "name": "@alevnyacow/get-directory-files",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "Provides files content and names in given directory",
   "main": "transpiled/index.js",
   "directories": {
